@@ -3,18 +3,21 @@ with open('day13input') as f:
 	for line in f:
 		line = line.replace(':','').split()
 		securityLevels.append([int(line[0]), int(line[1])])
+
+scannerList = []
+for item in securityLevels:		
+	scannerList.append((item[0], item[1] * 2 - 2))
+print(scannerList)
+
+letshopeLOL = 0
 caught = True
-delay = 0
-level = 0
 while caught:
-	tempSecurityLevels = list(securityLevels)
-	nextLevel = tempSecurityLevels.pop(0)
-	while tempSecurityLevels:		
-		if (nextLevel[0] + delay) % (nextLevel[1]*2 - 2) == 0:
-			break	
-		nextLevel = tempSecurityLevels.pop(0)
-	if tempSecurityLevels:
-		delay += 1
-	else:
-		caught = False
-print(delay)
+	caught = False
+	for item in scannerList:
+		#print('this modulo:', item[0], '+', letshopeLOL, '%', item[1], '=', item[0] + letshopeLOL % item[1])
+		if (item[0] + letshopeLOL) % item[1] == 0:
+			caught = True
+			break
+	if caught:
+		letshopeLOL += 1
+print(letshopeLOL)
