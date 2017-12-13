@@ -16,8 +16,7 @@ while caught:
 	for item in scannerList:
 		#print('this modulo:', item[0], '+', letshopeLOL, '%', item[1], '=', item[0] + letshopeLOL % item[1])
 		if (item[0] + letshopeLOL) % item[1] == 0:
+			letshopeLOL += 1
 			caught = True
 			break
-	if caught:
-		letshopeLOL += 1
 print(letshopeLOL)
