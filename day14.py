@@ -38,11 +38,9 @@ def hash2(inp):
 
 
 taken = []
-rows = []
 for i in range(128):
 	hashedRow = hash2(input + '-' + str(i))
 	hashedRow = bin(int(hashedRow, 16))[2:].zfill(128)
-	rows.append(hashedRow)
 	taken += [(i, j) for j, d in enumerate(hashedRow) if d == '1']
 print(len(taken))
 
@@ -54,7 +52,7 @@ while taken:
 		(x, y) = toBeChecked.pop()
 		if (x, y) in taken:
 			taken.remove((x, y))
-			toBeChecked += [(x - 1, y), (x+ 1, y), (x, y+1), (x, y-1)]
+			toBeChecked += [(x - 1, y), (x + 1, y), (x, y + 1), (x, y - 1)]
 	count += 1
 print(count)
 
